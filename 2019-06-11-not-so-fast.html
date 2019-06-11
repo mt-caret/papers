@@ -30,7 +30,7 @@ USENIX Annual Technical Conference 2019
 <a href="https://arxiv.org/abs/1901.09056">[1901.09056] Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</a>
 </li>
 </ul>
-<p>The title says it all: the main point of the paper is that the claims made by the paper introducing WebAssembly<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> are not as impressive as it seems; the authors argue that the benchmarks used (PolyBenchC) are not representative of typical WebAssembly use cases. It supports its claim by porting and benchmarking with the SPEC CPU benchmark suite (BROWSIX-SPEC) to the browser by developing an extension (BROWSIX-WASM) to BROWSIX, which exposes a Unix-compatible interface in the browser.</p>
+<p>The title says it all: the main point of the paper is that the claims made by the paper introducing WebAssembly<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> are not as impressive as it seems; the authors argue that the benchmarks used (PolyBenchC) are not representative of typical WebAssembly use cases. It supports its claim by porting to the browser and benchmarking with the SPEC CPU benchmark suite (BROWSIX-SPEC) by developing an extension (BROWSIX-WASM) to BROWSIX, which exposes a Unix-compatible interface in the browser.</p>
 <blockquote>
 <p>This evaluation confirms that WebAssembly does run faster than JavaScript (on average 1.3× faster across SPEC CPU). However, contrary to prior work, we find a substantial gap between Web- Assembly and native performance: code compiled to WebAssembly runs on average 1.55× slower in Chrome and 1.45× slower in Firefox than native code</p>
 </blockquote>
