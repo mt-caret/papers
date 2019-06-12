@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="dcterms.date" content="2019-06-12" />
-  <title>Rigorous Benchmarking in Reasonable Time</title>
+  <title>サーベイ</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -19,46 +19,11 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Rigorous Benchmarking in Reasonable Time</h1>
+<h1 class="title">サーベイ</h1>
 <p class="date">2019-06-12</p>
 </header>
-<ul>
-<li>
-ACM SIGPLAN International Symposium on Memory Management
-</li>
-<li>
-<a href="https://dl.acm.org/citation.cfm?id=2464160">Rigorous benchmarking in reasonable time</a>
-</li>
-<li>
-<a href="https://jvns.ca/blog/2016/07/23/rigorous-benchmarking-in-reasonable-time/">Benchmarking correctly is hard (and techniques for doing it better) - Julia Evans</a>
-</li>
-</ul>
-<p>While writing about the <a href="./2019-06-11-not-so-fast.html">Not So Fast paper</a> I became curious about benchmarking methodology; a quick search brought me to the above blog post, then this paper.</p>
-<p>In addition, this:</p>
-<blockquote>
-<p>Without wishing to pick on this work in particular, in 2019 statements like this depress me “Each benchmark uses 5 warm-up iterations” <a href="https://ionutbalosin.com/2019/04/jvm-jit-compilers-benchmarks-report-19-04/" class="uri">https://ionutbalosin.com/2019/04/jvm-jit-compilers-benchmarks-report-19-04/</a> … – Kalibera/Jones first showed this gives misleading results in 2012. I’d hoped that insight had percolated by now :(<br />
-<a href="https://twitter.com/laurencetratt/status/1117093954124701696" class="uri">https://twitter.com/laurencetratt/status/1117093954124701696</a></p>
-</blockquote>
-<p>Kalibera and Jones seem to be the leading experts on benchmarking methodology.</p>
-<p>The main claim of the paper is that there is a lack of statistical rigor when reporting performance evaluations via benchmarks. The paper goes on to offer several recommendations on how to better measure performance (and its variance) along with several formulas to calculate the number of iterations needed at each level (compilation, binary execution, iterations of the benchmark, etc.) in order to make the best use of time.</p>
-<blockquote>
-<p>We focus on execution time, the key measurement in, for example, 90 out of 122 papers presented in 2011 at PLDI, ASPLOS and ISMM, or published in TOPLAS (nos. 1–4) and TACO (nos. 1–2). Unfortunately, the overwhelming majority of these papers reported results in ways that seem to make their work impossible to repeat, or did not convincingly demonstrate their claims for performance improvement: 71 failed to provide any measure of variation (such as variance or a confidence interval) for their results. This is unparalleled in most other scientific and social scientific fields. It risks reporting misleading results.</p>
-</blockquote>
-<p>This is pretty sad. Are standards for research into computer science worse than those for various social sciences?</p>
-<h3 id="thoughts">thoughts</h3>
-<p>Language VMs are interesting from a performance evaluation standpoint because modern ones often do <a href="https://source.android.com/devices/tech/dalvik/jit-compiler">profiling</a> in addition to <a href="https://en.wikipedia.org/wiki/Tracing_just-in-time_compilation">JIT</a>. This means that the program performance will change over time as optimizations kick in. Note that this is also the case for regular binaries but to a much smaller extent due to paging, caches, etc. This is why the paper talks about a steady state (i.e. a state where the performance no longer suddenly varies).</p>
-<p>Discussion regarding benchmarking and statistics remind me of <a href="https://zedshaw.com/archive/programmers-need-to-learn-statistics-or-i-will-kill-them-all/">Programmers Need To Learn Statistics Or I Will Kill Them All – Zed A. Shaw</a>.</p>
-<p>The formulas derived were non-trivial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to someone without a statistical background; I really need to crack out the statistics textbooks and get a better understanding of this stuff.</p>
-<p>I remember reading something about using various information criteria being preferred over significance testing and such, but I’m not sure what the implications of each approach means.</p>
-<p>This is embarassing. I wasn’t able to follow the formulas in the paper; I’m coming back and rereading this after learning a bit more statistics. This is a must read for anybody who has to evaluate performance.</p>
-<p>This paper should come in handy when reading about <a href="https://renaissance.dev/resources/docs/renaissance-suite.pdf">new benchmark frameworks</a>.</p>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>read: impossible to understand<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
-</ol>
-</section>
-<a href="./2019-06-12.html">2019-06-12 - サーベイ</a> <a href="./index.html">index</a> <a href="#">#</a>
+
+<a href="./2019-06-11-not-so-fast.html">2019-06-11 - Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</a> <a href="./index.html">index</a> <a href="./2019-06-12-rigorous-benchmarking.html">2019-06-12 - Rigorous Benchmarking in Reasonable Time</a>
 <script src="https://utteranc.es/client.js" repo="mt-caret/papers" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
 <script> document.addEventListener("DOMContentLoaded", () => { [...document.querySelectorAll("img")].forEach(img => { img.addEventListener("click", () => { location.href = img.src; }); }); }); </script>
 </body>
