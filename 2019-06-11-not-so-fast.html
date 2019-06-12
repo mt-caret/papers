@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="dcterms.date" content="2019-06-11" />
-  <title>Mind the Gap: Analyzing the Performance of WebAssembly vs. Native Code</title>
+  <title>Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Mind the Gap: Analyzing the Performance of WebAssembly vs. Native Code</h1>
+<h1 class="title">Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</h1>
 <p class="date">2019-06-11</p>
 </header>
 <ul>
@@ -43,7 +43,7 @@ USENIX Annual Technical Conference 2019
 <img src="./img/not-so-fast-fig3.png" alt="Benchmark results" /><figcaption>Benchmark results</figcaption>
 </figure>
 <p>How is it possible that in some cases, WebAssembly actually <strong>outperforms</strong> native code, especially since both are compiled with the same compiler (clang) but with different backends? Is JIT <strong>that</strong> good?</p>
-<p>The takeaway seems to be that WebAssembly isn’t as fast as stated; but I don’t think this really matters in terms of real-world implications. As stated by the authors themselves, WebAssembly still achieves a 1.3x mean speedup over asm.js (matching the numbers reported in <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>) with negligible JIT-compile times (see Table 2).</p>
+<p>The takeaway seems to be that WebAssembly isn’t as fast as stated; but I don’t think this really matters in terms of real-world usage. As stated by the authors themselves, WebAssembly still achieves a 1.3x mean speedup over asm.js (matching the numbers reported in <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>) with negligible JIT-compile times (see Table 2).</p>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
@@ -51,7 +51,7 @@ USENIX Annual Technical Conference 2019
 <li id="fn2" role="doc-endnote"><p><a href="https://dl.acm.org/citation.cfm?id=3062363">Bringing the web up to speed with WebAssembly</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
 </ol>
 </section>
-<a href="./2018-03-12.html">2018-03-12 - メタサーベイ</a> <a href="./index.html">index</a> <a href="#">#</a>
+<a href="./2018-03-12.html">2018-03-12 - メタサーベイ</a> <a href="./index.html">index</a> <a href="./2019-06-12.html">2019-06-12 - Rigorous Benchmarking in Reasonable Time</a>
 <script src="https://utteranc.es/client.js" repo="mt-caret/papers" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
 <script> document.addEventListener("DOMContentLoaded", () => { [...document.querySelectorAll("img")].forEach(img => { img.addEventListener("click", () => { location.href = img.src; }); }); }); </script>
 </body>

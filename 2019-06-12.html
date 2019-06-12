@@ -4,22 +4,14 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="dcterms.date" content="2019-03-12" />
-  <title>メタサーベイ</title>
+  <meta name="dcterms.date" content="2019-06-12" />
+  <title>Rigorous Benchmarking in Reasonable Time</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
-    var mathElements = document.getElementsByClassName("math");
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false } );
-    }}});</script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -27,84 +19,46 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">メタサーベイ</h1>
-<p class="date">2019-03-12</p>
+<h1 class="title">Rigorous Benchmarking in Reasonable Time</h1>
+<p class="date">2019-06-12</p>
 </header>
-<p>そろそろ論文のサーベイをしていった方がよさそうだからこの先どういう形式でpostしていくか決めようと思う。ということで論文執筆・サーベイの仕方に関するサーベイをする。</p>
-<hr />
-<p><a href="http://itolab.is.ocha.ac.jp/~itot/message/ItolabWriting2018.pdf">はじめての論文執筆</a></p>
-<p>お茶の水女子大の研究室の資料。</p>
-<p>研究室specificな話がちょいちょいある。</p>
-<blockquote>
-<p>1.3 自分の研究の提案内容のコア部分自分の研究の中で、「これが世の中で新しい」というコアな部分を説明します。</p>
-</blockquote>
-<p>What’s Newだ</p>
-<blockquote>
-<p>アブストラクト：この論文に書かれている内容を全体的に示す要約。アブストラクトは本文から分離して単独で配布されることがあるので、アブストラクトだけが独り歩きしても論文の全容が伝わるような構成で書く必要があります。</p>
-</blockquote>
-<p>後半は書く時の具体的な話で、今はあまり関係なさそう。</p>
-<hr />
-<p><a href="https://twitter.com/kentarofukuchi/status/821901510665637888">Kentaro Fukuchiさんのツイート: “その論文、その技術文書、「なにを」「どうやって」の説明ばかりで、肝心の「なぜ」が不足していませんか? という指摘をいつも繰り返すので、図解してみた。…”</a></p>
-<p>はい</p>
-<hr />
-<p><a href="http://komachi.hatenablog.com/entry/20150428/p1">1年で論文100本読みましょう - 武蔵野日記</a></p>
-<p>研究をする上で論文を読むのは大事だよね、具体的にどのように、どれぐらい読むのがよいのか、に関する考えといくつか資料を提示しているブログ記事。</p>
-<p><a href="http://www.phontron.com/slides/neubig15nlptutorial.pdf">国際会議論文の読み方・書き方</a></p>
-<p>上のブログで紹介されているスライド。NLPで有名なNeubig氏によるもので、NLP関係の論文を書くことをテーマとしているが普通に参考になる。サーベイをする上で論文は 30本から1000本程度読むべきで、多ければ多いほどよい、という風に読み取れる。</p>
-<p>お茶女の資料と同様に論文の構成に関して言及しているのが印象に残る。論文をいざ書くってタイミングでまた参照したいな。</p>
-<p><a href="https://www.slideshare.net/Ochyai/1-ftma15">先端技術とメディア表現1 #FTMA15</a></p>
-<p>こちらもブログ記事で紹介されている、落合陽一氏によるスライド。</p>
-<blockquote>
-<p>つまらない実装やアイデアのほとんどは先行研究や事例への無知によって生まれている.</p>
-<p>実装コスト <span class="math inline">\neq</span> クオリティ</p>
-<p>そしてよく事例を知っている人でも, コンテクストを理解しないと次にどういう大きな流れが来るのかを読むのは難しい.</p>
-</blockquote>
-<p>うーん</p>
-<blockquote>
 <ul>
 <li>
-<p>人間コース: （この分野に詳しくなりたい人向け）1人で週1本論文を読んでください．それとリファレンス欄にある関連研究5本のアブスト＆イントロ＆結論だけ読んできてください．1-2分の発表スライドを毎週提出してください．</p>
+ACM SIGPLAN International Symposium on Memory Management
 </li>
 <li>
-<p>鬼コース: （この分野に進みたい人向け）1週目: 自分の興味ある論文を25本読んできてください．（中略）2週目: （中略）もうちょっとテーマを絞って興味ある論文を 25本読んできてください．（以下略）</p>
+<a href="https://dl.acm.org/citation.cfm?id=2464160">Rigorous benchmarking in reasonable time</a>
+</li>
+<li>
+<a href="https://jvns.ca/blog/2016/07/23/rigorous-benchmarking-in-reasonable-time/">Benchmarking correctly is hard (and techniques for doing it better) - Julia Evans</a>
 </li>
 </ul>
-</blockquote>
-<p>人間コースに相当する内容を毎日できるのが理想だけどなかなか難しい。１ヶ月かけて鬼コースを目指すのが現実的なのかなぁ。</p>
+<p>While writing about the <a href="./2019-06-11-not-so-fast.html">Not So Fast paper</a> I became curious about benchmarking methodology; a quick search brought me to the above blog post, then this paper.</p>
+<p>In addition, this:</p>
 <blockquote>
-<p>おすすめはアブスト→結論→実験→関連研究</p>
+<p>Without wishing to pick on this work in particular, in 2019 statements like this depress me “Each benchmark uses 5 warm-up iterations” <a href="https://ionutbalosin.com/2019/04/jvm-jit-compilers-benchmarks-report-19-04/" class="uri">https://ionutbalosin.com/2019/04/jvm-jit-compilers-benchmarks-report-19-04/</a> … – Kalibera/Jones first showed this gives misleading results in 2012. I’d hoped that insight had percolated by now :(<br />
+<a href="https://twitter.com/laurencetratt/status/1117093954124701696" class="uri">https://twitter.com/laurencetratt/status/1117093954124701696</a></p>
 </blockquote>
-<p>スライドにあるまとめ方の例を参考にするのはアリかな。</p>
-<hr />
-<p><a href="http://lafrenze.hatenablog.com/entry/2015/08/04/120205">高速で論文がバリバリ読める落合先生のフォーマットがいい感じだったのでメモ - 書架とラフレンツェ</a></p>
-<p>被った。</p>
+<p>Kalibera and Jones seem to be the leading experts on benchmarking methodology.</p>
+<p>The main claim of the paper is that there is a lack of statistical rigor when reporting performance evaluations via benchmarks. The paper goes on to offer several recommendations on how to better measure performance (and its variance) along with several formulas to calculate the number of iterations needed at each level (compilation, binary execution, iterations of the benchmark, etc.) in order to make the best use of time.</p>
 <blockquote>
-<ol type="1">
-<li>どんなもの？</li>
-<li>先行研究と比べてどこがすごい？</li>
-<li>技術や手法のキモはどこ？</li>
-<li>どうやって有効だと検証した？</li>
-<li>議論はある？</li>
-<li>次に読むべき論文は？</li>
-</ol>
+<p>We focus on execution time, the key measurement in, for example, 90 out of 122 papers presented in 2011 at PLDI, ASPLOS and ISMM, or published in TOPLAS (nos. 1–4) and TACO (nos. 1–2). Unfortunately, the overwhelming majority of these papers reported results in ways that seem to make their work impossible to repeat, or did not convincingly demonstrate their claims for performance improvement: 71 failed to provide any measure of variation (such as variance or a confidence interval) for their results. This is unparalleled in most other scientific and social scientific fields. It risks reporting misleading results.</p>
 </blockquote>
-<p>フォーマットは論文の種類に応じて適宜変えましょうという話がある。</p>
-<p><a href="https://readingmonkey.blog.fc2.com/blog-entry-684.html">集めた文献をどう整理すべきか？→知のフロント（前線）を浮かび上がらせるレビュー・マトリクスという方法 読書猿Classic: between / beyond readers</a></p>
-<p>TL;DRが嬉しい。レビューマトリクスの利用の仕方をまとめたブログ記事。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p><a href="https://readingmonkey.blog.fc2.com/blog-entry-457.html">結論から言えば、参考文献リストは長いほどいい／文献収集が論文執筆にもたらす４つのご利益 読書猿Classic: between / beyond readers</a></p>
-<p>関連記事。サーベイに伴う様々なメリットのまとめ。</p>
-<hr />
-<p><a href="https://www.slideshare.net/iTooooooooooooT/itolab-how-to-survey-2017">研究分野をサーベイする</a></p>
-<p>お茶女の同じ研究室からのスライド。ここでも数十〜数百本の論文を読んでいることを想定している。</p>
-<hr />
-<p>残りの各所からリンクされている資料に目を通したけれど、おおよそここにある内容と被っているので割愛。</p>
+<p>This is pretty sad. Are standards for research into computer science worse than those for various social sciences?</p>
+<h3 id="thoughts">thoughts</h3>
+<p>Language VMs are interesting from a performance evaluation standpoint because modern ones often do <a href="https://source.android.com/devices/tech/dalvik/jit-compiler">profiling</a> in addition to <a href="https://en.wikipedia.org/wiki/Tracing_just-in-time_compilation">JIT</a>. This means that the program performance will change over time as optimizations kick in. Note that this is also the case for regular binaries but to a much smaller extent due to paging, caches, etc. This is why the paper talks about a steady state (i.e. a state where the performance no longer suddenly varies).</p>
+<p>Discussion regarding benchmarking and statistics remind me of <a href="https://zedshaw.com/archive/programmers-need-to-learn-statistics-or-i-will-kill-them-all/">Programmers Need To Learn Statistics Or I Will Kill Them All – Zed A. Shaw</a>.</p>
+<p>The formulas derived seem non-trivial<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to someone without a statistical background; I really need to crack out the statistics textbooks and get a better understanding of this stuff.</p>
+<p>I remember reading something about using various information criteria being preferred over significance testing and such, but I’m not sure what the implications of each approach means.</p>
+<p>This is embarassing. I wasn’t able to follow the formulas in the paper; I’m coming back and rereading this after learning a bit more statistics. This is a must read for anybody who has to evaluate performance.</p>
+<p>This paper should come in handy when reading about <a href="https://renaissance.dev/resources/docs/renaissance-suite.pdf">new benchmark frameworks</a>.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>あまり関係ないけれど、情報を表にして整理することによって抜けているところが可視化されて新たな発見がある、コストがほぼかからないからやっていきたい。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>read: impossible to understand<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
 </ol>
 </section>
-<a href="#">#</a> <a href="./index.html">index</a> <a href="./2019-06-11-not-so-fast.html">2019-06-11-not-so-fast - Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</a>
+<a href="./2019-06-11-not-so-fast.html">2019-06-11-not-so-fast - Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</a> <a href="./index.html">index</a> <a href="#">#</a>
 <script src="https://utteranc.es/client.js" repo="mt-caret/papers" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
 <script> document.addEventListener("DOMContentLoaded", () => { [...document.querySelectorAll("img")].forEach(img => { img.addEventListener("click", () => { location.href = img.src; }); }); }); </script>
 </body>
