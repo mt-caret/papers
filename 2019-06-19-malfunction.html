@@ -30,7 +30,8 @@ ML 2016 with ICFP 2016
 <a href="https://www.cl.cam.ac.uk/~sd601/papers/malfunction.pdf">Malfunctional Programming</a>
 </li>
 </ul>
-<p>This paper proposes Malfunction, an untyped intermediate language representation (based on OCaml’s IR<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) intended to be a target for functional programming language compilers. If you want to build a functional programming language, there are several approaches to get something executing.</p>
+<p>This paper proposes Malfunction, an untyped intermediate language representation (based on OCaml’s IR<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) intended to be a target for functional programming language compilers.</p>
+<p>The motivation for Malfunction is as follows: if you want to build a functional programming language, there are several approaches to get something executing.</p>
 <p>One approach is to target C or make use of compiler frameworks like LLVM. This will probably produce fairly optimized code, but leaves the difficult task of creating a runtime (including garbage collection) up to you.</p>
 <p>Another approach might be to target bytecode for .NET CLR or JVM. This has the benefit of a mature, performant runtime at the cost of being restricted to the runtime’s design choices (such as the particular type system used) making it difficult to take advantage of more sophisticated type systems.</p>
 <p>Compiling to dynamic languages such as JavaScript also is an option, but if your language already is statically typed, runtime type checks are redundant.</p>
