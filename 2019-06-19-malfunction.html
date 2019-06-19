@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>papers</title>
+  <meta name="dcterms.date" content="2019-06-19" />
+  <title>Malfunctional Programming</title>
   <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,24 +19,69 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">papers</h1>
+<h1 class="title">Malfunctional Programming</h1>
+<p class="date">2019-06-19</p>
 </header>
 <ul>
 <li>
-<a href="./2019-06-19-malfunction.html">2019-06-19 - Malfunctional Programming</a>
+ML 2016 with ICFP 2016
 </li>
 <li>
-<a href="./2019-06-13-creating-a-computer-science-canon.html">2019-06-13 - Creating a Computer Science Canon: a Course of "Classic" Readings in Computer Science</a>
-</li>
-<li>
-<a href="./2019-06-12-rigorous-benchmarking.html">2019-06-12 - Rigorous Benchmarking in Reasonable Time</a>
-</li>
-<li>
-<a href="./2019-06-11-not-so-fast.html">2019-06-11 - Not So Fast: Analyzing the Performance of WebAssembly vs. Native Code</a>
-</li>
-<li>
-<a href="./2018-03-12.html">2019-03-12 - メタサーベイ</a>
+<a href="https://www.cl.cam.ac.uk/~sd601/papers/malfunction.pdf">Malfunctional Programming</a>
 </li>
 </ul>
+<p>This paper proposes Malfunction, an untyped intermediate language representation (based on OCaml’s IR<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) intended to be a target for functional programming language compilers. If you want to build a functional programming language, there are several approaches to get something executing.</p>
+<p>One approach is to target C or make use of compiler frameworks like LLVM. This will probably produce fairly optimized code, but leaves the difficult task of creating a runtime (including garbage collection) up to you.</p>
+<p>Another approach might be to target bytecode for .NET CLR or JVM. This has the benefit of a mature, performant runtime at the cost of being restricted to the runtime’s design choices (such as the particular type system used) making it difficult to take advantage of more sophisticated type systems.</p>
+<p>Compiling to dynamic languages such as JavaScript also is an option, but if your language already is statically typed, runtime type checks are redundant.</p>
+<p>Malfunction strikes a nice middle ground among the approaches as a) it is untyped and assumed correct, so does not restrict the language’s type system nor does it duplicate type checking work at runtime, and b) benefits from OCaml’s mature runtime and backend optimizations.</p>
+<p>A simple program taken from the <a href="https://github.com/stedolan/malfunction/blob/master/docs/print_args.mlf">repository</a>:</p>
+<pre><code>; This program prints its command-line arguments to stdout
+(module
+
+  ($argv (global $Sys $argv))
+
+  ; $argv is a vector, turn it into a list
+  ; lists are either the integer 0 (nil) or a block of tag 0 (cons)
+  ($argc (length $argv))
+  (rec
+    ($argv_to_list (lambda ($i)
+      (if (== $i $argc)
+        0
+        (block (tag 0) (load $argv $i)
+          (apply $argv_to_list (+ $i 1)))))))
+  ($argv_list (apply $argv_to_list 1)) ; Start at 1 to skip argv[0]
+
+  ; Since this is the standard OCaml list representation, we may
+  ; use standard library functions
+
+  ($print (lambda ($s)
+    (apply (global $Stdlib $print_endline) $s)))
+  (_ (apply (global $List $iter) $print $argv_list))
+
+(export))</code></pre>
+<h3 id="thoughts">thoughts</h3>
+<blockquote>
+<p>The next question is whether it’s at all valid to reuse Lambda, which was designed solely as an intermediate representation for OCaml. … I conjecture that OCaml will not miscompile any Malfunction program, or at least that when it does, it will also miscompile a sufficiently contrived OCaml program.</p>
+</blockquote>
+<p>I expected rigorous analysis rather than conjecture, but I guess Malfunction is more of a cool (and fairly useful) hack than something that warrants formal proofs?</p>
+<p>I’ve been looking for something like this for quite a while<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, I’ll probably make use of this when I build my own functional programming language.</p>
+<p>One thing I noticed while reading the <a href="https://github.com/stedolan/malfunction/blob/master/docs/spec.md">spec</a> was the absence of refs. I guess they aren’t implemented yet?</p>
+<h3 id="related-resources">related resources</h3>
+<ul>
+<li>
+<a href="https://dev.realworldocaml.org/compiler-frontend.html">The Compiler Frontend: Parsing and Type Checking - Real World OCaml</a>
+</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><code>-dlambda</code> output<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://www.youtube.com/watch?v=uR_VzYxvbxg">Haskell’s Core</a> would have been a good candidate if only it wasn’t lazy…<a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
+</ol>
+</section>
+<a href="./2019-06-13-creating-a-computer-science-canon.html">2019-06-13 - Creating a Computer Science Canon: a Course of \"Classic\" Readings in Computer Science</a> <a href="./index.html">index</a> <a href="#">#</a>
+<script src="https://utteranc.es/client.js" repo="mt-caret/papers" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+<script> document.addEventListener("DOMContentLoaded", () => { [...document.querySelectorAll("img")].forEach(img => { img.addEventListener("click", () => { location.href = img.src; }); }); }); </script>
 </body>
 </html>
